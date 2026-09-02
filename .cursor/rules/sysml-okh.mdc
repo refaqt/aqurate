@@ -1,0 +1,9 @@
+---
+description: SysML requirements and OKH manifest conventions
+globs: "**/*.sysml,**/okh.toml,**/architecture/**"
+alwaysApply: false
+---
+
+# SysML and OKH
+
+Follow [`.agents-local/rules/sysml-okh.md`](../../.agents-local/rules/sysml-okh.md).

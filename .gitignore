@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# FreeCAD
+*.FCBak
+*.FCStd1
+# Unzipped FreeCAD document contents and archives (regenerable from *.FCStd)
+**/fcstd-extract/
+*.zip
+# CalculiX/FEM solver scratch + output (regenerable from *.FCStd)
+FEMMeshGmsh.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated outputs
+**/bom/bom_output.md
+bom/bom.csv
+**/cad/params.csv
+
+# Editor / local
+.cursor/_backup*/
+_vendor/

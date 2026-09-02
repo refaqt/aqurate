@@ -1,0 +1,34 @@
+# Contributing
+
+## Principles
+
+- **Text-first:** Prefer CSV, SysML, TOML, and Markdown over opaque binaries.
+- **Never edit generated files:** Root `bom/bom.csv`, module `cad/params.csv`, `graph/usage-graph.json` (regenerate with scripts).
+Requirements live in SysML under `architecture/` — not duplicate requirement docs. Graphical editing: double-click `syson.bat` (see `doqs/docs/syson.md`).
+- **Geometry in FreeCAD:** Agents must not edit `.FCStd` files; change parameters via `cad/params/` and `sync_params.py`.
+
+## Commit messages
+
+Use [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <short description>
+```
+
+Types include: `feat`, `fix`, `docs`, `cad`, `arch`, `okh`, `firmware`, `chore`, `refactor`, `interface`, `model`, `build`, `params`.
+
+## Before opening a PR
+
+1. Run `python doqs/scripts/validate_all.py` from the repository root.
+2. If a first-level content directory was added, run `python doqs/scripts/apply_licenses.py` first.
+3. Update log / ADR / mistakes entries in `docs/` when applicable.
+4. Regenerate aggregated BOM and usage graph if manifests or lockfiles changed.
+
+## Branches
+
+- `main` — next major version development
+- `release/vN.x` — long-term support for deployed machines (see architecture doc)
+
+## Modules
+
+To add a sub-assembly, create `modules/<name>/` with the standard DOQS module layout (see `doqs/docs/architecture.md`) and register it in the root `okh.toml` via `[[hasComponent]]`.

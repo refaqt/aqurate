@@ -1,0 +1,12 @@
+---
+description: Python layout and test habits for this repository
+globs: "**/*.py, tests/**"
+alwaysApply: false
+---
+
+# Python
+
+Follow [`.agents/rules/python.md`](../../.agents/rules/python.md).
+
+- Run package entry points and DOQS scripts from the repository root.
+- When a package later lives under `software/`, prefer `python -m` from that package's documented working directory.

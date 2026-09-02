@@ -1,0 +1,9 @@
+---
+description: DOQS design session checklist, validators, and module conventions
+globs: "okh.toml,**/okh.toml,builds/**,graph/**,bom/**,doqs/**"
+alwaysApply: false
+---
+
+# DOQS workflow
+
+Follow [`.agents-local/rules/doqs-workflow.md`](../../.agents-local/rules/doqs-workflow.md).
