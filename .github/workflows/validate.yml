@@ -1,0 +1,22 @@
+name: DOQS validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: validate_all
+        run: python doqs/scripts/validate_all.py
+      - name: build_graph
+        run: python doqs/scripts/build_graph.py
+      - name: Check graph committed
+        run: git diff --exit-code graph/usage-graph.json

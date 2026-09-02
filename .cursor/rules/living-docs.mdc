@@ -1,0 +1,10 @@
+---
+description: Living docs layout, bootstrap, ADRs, and when to update architecture, onboarding, skills, and mistakes
+alwaysApply: false
+---
+
+# Living documentation
+
+Follow [`.agents/rules/living-docs.md`](../../.agents/rules/living-docs.md).
+
+Aqurate paths and update triggers: [`.agents-local/rules/living-docs.md`](../../.agents-local/rules/living-docs.md).

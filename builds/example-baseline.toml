@@ -1,0 +1,16 @@
+# Template — copy to builds/<your-id>/build.toml and customize.
+schema = "doqs-build-v1"
+machine = "aqurate"
+built-date = "YYYY-MM-DD"
+owner = ""
+location = ""
+
+[base]
+repo = "https://github.com/refaqt/aqurate"
+version = "v0.1.0"
+
+# Add [[module]] entries when sub-assemblies exist under modules/:
+# [[module]]
+# path = "modules/<name>"
+# version = "v0.1.0"
+# model = "default"

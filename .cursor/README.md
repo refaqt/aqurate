@@ -1,0 +1,42 @@
+# Agent kit (Aqurate / DOQS)
+
+Three layers: shared [refaqt-agents](https://github.com/refaqt/refaqt-agents) at `.agents/`, Aqurate-local kit at `.agents-local/`, and these Cursor adapters.
+
+Entry point: [`AGENTS.md`](../AGENTS.md). Claude Code: [`CLAUDE.md`](../CLAUDE.md) imports `AGENTS.md`.
+
+## Always-on rules
+
+- `core.mdc` — `.agents/rules/core.md` + `.agents-local/rules/repo.md`
+- `repo-profile.mdc` — `.agents-local/rules/repo.md`
+- `living-docs.mdc` — `.agents/rules/living-docs.md` + `.agents-local/rules/living-docs.md`
+
+## Scoped rules (load when relevant)
+
+| Rule | Topics |
+|------|--------|
+| `doqs-workflow.mdc` | validators, modules, builds, commits |
+| `doqs-naming.mdc` | okh.toml, BOM, module paths, naming validators |
+| `freecad.mdc` | cad/, params, sync, debugging workflow |
+| `sysml-okh.mdc` | .sysml, okh.toml |
+| `planning-and-testing.mdc` | multi-file work, Python tests |
+| `python.mdc` | `**/*.py` |
+| `powershell.mdc` | Windows shell |
+| `communication.mdc` | response style |
+| `subagents.mdc` | delegation |
+
+Rule bodies live in `.agents/rules/` and `.agents-local/rules/`. This folder holds thin `.mdc` adapters only.
+
+## Skills
+
+Skills are **not** duplicated under `.cursor/skills/`. Load from:
+
+| Skill | Path |
+| --- | --- |
+| Shared process + DOQS domain | `.agents/skills/` |
+| Aqurate-local | `.agents-local/skills/patterns/` |
+
+Claude Code discovers the same skills via symlinks in `.claude/skills/`.
+
+## Bootstrap
+
+Primary stubs: `.agents/bootstrap/docs/`. If living-doc folders are missing, copy from there (do not copy over DOQS folder-based mistakes/decisions).

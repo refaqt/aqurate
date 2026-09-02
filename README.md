@@ -1,0 +1,65 @@
+# Aqurate
+
+Open-source positioning and error-motion measurement system — text-first, Git-friendly, [DOQS](https://github.com/refaqt/doqs) documentation system.
+
+The repository root is the **top-level DOQS module**. Sub-assemblies will live under `modules/` when added; none exist yet.
+
+## Quick start
+
+1. Clone with submodules: `git clone --recurse-submodules https://github.com/refaqt/aqurate.git`
+2. From the repo root, agents run `bash setup-tooling.sh` so `doqs/` and `.agents/` track latest `main`. Humans on Windows may double-click `setup-tooling.bat`. Do not run those helpers from `doqs/templates/setup-tooling/`.
+3. Install https://git-lfs.com/ and run `git lfs install` before pulling CAD binaries.
+4. Read `docs/onboarding.md` for tooling, validation, and agent workflow.
+5. Open `architecture/machine.sysml` for system requirements, or double-click `syson.bat` for the SysON control panel (Docker Desktop once; see `doqs/docs/syson.md`).
+
+## Validation
+
+From the repository root:
+
+```powershell
+python doqs/scripts/validate_all.py
+python doqs/scripts/build_graph.py
+```
+
+`validate_all.py` runs `validate_okh`, `validate_licenses`, `check_names`, `check_links`, and `validate_build`. After adding a first-level content directory, also run `python doqs/scripts/apply_licenses.py`.
+
+## Layout
+
+| Path              | Role                                                 |
+| ----------------- | ---------------------------------------------------- |
+| `LICENSE`         | Overview mapping directories to licences             |
+| `LICENSES/`       | Full CERN-OHL-S, GPL-3.0, and CC BY-SA texts         |
+| `TRADEMARKS.md`   | Reserved organisation and project marks              |
+| `architecture/`   | Top-level SysML (requirements, interfaces)           |
+| `cad/`            | Machine assembly FreeCAD + exports                   |
+| `modules/`        | Reserved for future sub-assemblies (empty today)     |
+| `builds/`         | Physical machine lockfiles                           |
+| `measurement/`    | Test campaigns and external-data manifest            |
+| `graph/`          | Generated reverse-usage graph                        |
+| `doqs/`           | Git submodule — shared tools, templates, schemas     |
+| `.agents/`        | Git submodule — shared agent rules and skills        |
+| `.agents-local/`  | Aqurate-only agent rules and skills                  |
+| `firmware/`       | Embedded software targets                            |
+| `software/`       | Host-side analysis and measurement tooling           |
+| `docs/`           | Narrative: log, mistakes, decisions                  |
+
+## Agents
+
+Cursor, Claude Code, and cloud agents: start at [`AGENTS.md`](AGENTS.md). Shared kit is in
+[`.agents/`](.agents/); repo-specific rules and skills in [`.agents-local/`](.agents-local/).
+
+## Licence
+
+This repository uses different licences for different kinds of content:
+
+- **Hardware** (`cad/`, `architecture/`, `manufacturing/`, `bom/`, `builds/`, `modules/`) —
+  [CERN-OHL-S v2.0](LICENSES/CERN-OHL-S-2.0.txt)
+- **Firmware & software** (`firmware/`, `software/`, `simulation/`) —
+  [GPL-3.0](LICENSES/GPL-3.0.txt)
+- **Media & documentation** (`docs/`, `measurement/`) —
+  [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt)
+
+The Refaqt BV, BE 0804.145.539 name and logo, and the Aqurate name and logo, are
+trademarks and are not covered by the above — see [TRADEMARKS.md](TRADEMARKS.md).
+
+See [LICENSE](LICENSE) for the full overview and directory mapping.
